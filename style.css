@@ -1,0 +1,164 @@
+/* Simple white + blue theme */
+:root{
+  --bg: #eaf3ff;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #5b6b84;
+  --blue: #1e66f5;
+  --blue-700: #174fd1;
+  --border: #d6e6ff;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px 520px at 15% 5%, rgba(30, 102, 245, 0.18) 0%, rgba(30, 102, 245, 0) 60%),
+    radial-gradient(900px 520px at 85% 15%, rgba(30, 102, 245, 0.12) 0%, rgba(30, 102, 245, 0) 55%),
+    linear-gradient(135deg, #ffffff 0%, #f3f8ff 40%, var(--bg) 100%);
+  padding: 32px 16px;
+}
+
+/* Main app card (matches your HTML class name) */
+.cantainer{
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.cantainer h1{
+  margin: 0 0 14px 0;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Input row */
+.cantainer > div:first-of-type{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+#inputTask{
+  flex: 1;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+  background: #ffffff;
+}
+
+#inputTask::placeholder{
+  color: var(--muted);
+}
+
+#inputTask:focus{
+  border-color: rgba(30, 102, 245, 0.55);
+  box-shadow: 0 0 0 4px rgba(30, 102, 245, 0.15);
+}
+
+#addTask{
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgba(30, 102, 245, 0.25);
+  border-radius: 10px;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0 10px 18px rgba(30, 102, 245, 0.20);
+}
+
+#addTask:hover{
+  background: var(--blue-700);
+}
+
+#addTask:active{
+  transform: translateY(1px);
+}
+
+#addTask:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(30, 102, 245, 0.18), 0 10px 18px rgba(30, 102, 245, 0.20);
+}
+
+/* Task list */
+#taskList{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+#taskList li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 12px 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #ffffff;
+  user-select: none;
+  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+
+#taskList li:hover{
+  background: #f7fbff;
+  border-color: rgba(30, 102, 245, 0.25);
+}
+
+/* Completed tasks (your JS sets inline textDecoration) */
+#taskList li[style*="line-through"]{
+  color: #6a7a94;
+  background: #f9fbff;
+}
+
+/* Delete button inside each li */
+#taskList li button{
+  border: 1px solid rgba(30, 102, 245, 0.25);
+  background: #ffffff;
+  color: var(--blue);
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  flex: 0 0 auto;
+}
+
+#taskList li button:hover{
+  background: rgba(30, 102, 245, 0.08);
+  border-color: rgba(30, 102, 245, 0.45);
+}
+
+#taskList li button:active{
+  background: rgba(30, 102, 245, 0.12);
+}
+
+@media (max-width: 520px){
+  .cantainer{
+    padding: 18px;
+  }
+  .cantainer > div:first-of-type{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #addTask{
+    width: 100%;
+  }
+}
